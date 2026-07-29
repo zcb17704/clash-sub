@@ -2,7 +2,7 @@ proxies:
   - name: "自建-东京-v4"
     type: vless
     server: 45.192.249.244
-    port: 8443
+    port: 46028
     uuid: 130aa8e0-d9ee-4c1a-b590-1d538a9c29bf
     network: tcp
     tls: true
@@ -18,7 +18,7 @@ proxies:
   - name: "自建-香港-v4"
     type: vless
     server: 151.242.125.100
-    port: 8443
+    port: 46028
     uuid: 34309e50-6697-4836-8d0e-c17ee2f979c4
     network: tcp
     tls: true
@@ -34,7 +34,7 @@ proxies:
   - name: "自建-东京-v6"
     type: vless
     server: 2602:fa4f:a30:1543:a89b:8f35:266b:9a98
-    port: 8443
+    port: 46028
     uuid: 130aa8e0-d9ee-4c1a-b590-1d538a9c29bf
     network: tcp
     tls: true
@@ -50,7 +50,7 @@ proxies:
   - name: "自建-香港-v6"
     type: vless
     server: 2a0e:97c0:7da:a564:7355:a37a:5c2f:536b
-    port: 8443
+    port: 46028
     uuid: 34309e50-6697-4836-8d0e-c17ee2f979c4
     network: tcp
     tls: true
