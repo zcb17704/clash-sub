@@ -1,0 +1,142 @@
+proxies:
+  - name: "自建-东京-v4"
+    type: vless
+    server: 45.192.249.244
+    port: 8443
+    uuid: 130aa8e0-d9ee-4c1a-b590-1d538a9c29bf
+    network: tcp
+    tls: true
+    udp: true
+    flow: xtls-rprx-vision
+    client-fingerprint: chrome
+    servername: www.apple.com
+    skip-cert-verify: true
+    reality-opts:
+      public-key: PZbWzaFDKzEudGuUHNQskYsni1stsBOWMB1wQouJSVg
+      short-id: "47a06576"
+
+  - name: "自建-香港-v4"
+    type: vless
+    server: 151.242.125.100
+    port: 8443
+    uuid: 34309e50-6697-4836-8d0e-c17ee2f979c4
+    network: tcp
+    tls: true
+    udp: true
+    flow: xtls-rprx-vision
+    client-fingerprint: chrome
+    servername: www.apple.com
+    skip-cert-verify: true
+    reality-opts:
+      public-key: ZUpEUDxLNrNXWkiT20EFTz6cIc0RmjL-Olib-OennB0
+      short-id: "5eac8289"
+
+  - name: "自建-东京-v6"
+    type: vless
+    server: 2602:fa4f:a30:1543:a89b:8f35:266b:9a98
+    port: 8443
+    uuid: 130aa8e0-d9ee-4c1a-b590-1d538a9c29bf
+    network: tcp
+    tls: true
+    udp: true
+    flow: xtls-rprx-vision
+    client-fingerprint: chrome
+    servername: www.apple.com
+    skip-cert-verify: true
+    reality-opts:
+      public-key: PZbWzaFDKzEudGuUHNQskYsni1stsBOWMB1wQouJSVg
+      short-id: "47a06576"
+
+  - name: "自建-香港-v6"
+    type: vless
+    server: 2a0e:97c0:7da:a564:7355:a37a:5c2f:536b
+    port: 8443
+    uuid: 34309e50-6697-4836-8d0e-c17ee2f979c4
+    network: tcp
+    tls: true
+    udp: true
+    flow: xtls-rprx-vision
+    client-fingerprint: chrome
+    servername: www.apple.com
+    skip-cert-verify: true
+    reality-opts:
+      public-key: ZUpEUDxLNrNXWkiT20EFTz6cIc0RmjL-Olib-OennB0
+      short-id: "5eac8289"
+
+proxy-groups:
+  - name: "🚀 自建节点"
+    type: select
+    proxies:
+      - "自建-东京-v4"
+      - "自建-香港-v4"
+      - "自建-东京-v6"
+      - "自建-香港-v6"
+
+rule-providers:
+  BanAD:
+    type: http
+    behavior: classical
+    url: "https://cdn.jsdelivr.net/gh/ACL4SSR/ACL4SSR@master/Clash/Providers/BanAD.yaml"
+    path: ./ruleset/BanAD.yaml
+    interval: 86400
+  Apple:
+    type: http
+    behavior: classical
+    url: "https://cdn.jsdelivr.net/gh/ACL4SSR/ACL4SSR@master/Clash/Providers/Apple.yaml"
+    path: ./ruleset/Apple.yaml
+    interval: 86400
+  ProxyGFWlist:
+    type: http
+    behavior: classical
+    url: "https://cdn.jsdelivr.net/gh/ACL4SSR/ACL4SSR@master/Clash/Providers/ProxyGFWlist.yaml"
+    path: ./ruleset/ProxyGFWlist.yaml
+    interval: 86400
+  ProxyMedia:
+    type: http
+    behavior: classical
+    url: "https://cdn.jsdelivr.net/gh/ACL4SSR/ACL4SSR@master/Clash/Providers/ProxyMedia.yaml"
+    path: ./ruleset/ProxyMedia.yaml
+    interval: 86400
+  ProxyLite:
+    type: http
+    behavior: classical
+    url: "https://cdn.jsdelivr.net/gh/ACL4SSR/ACL4SSR@master/Clash/Providers/ProxyLite.yaml"
+    path: ./ruleset/ProxyLite.yaml
+    interval: 86400
+  ChinaDomain:
+    type: http
+    behavior: classical
+    url: "https://cdn.jsdelivr.net/gh/ACL4SSR/ACL4SSR@master/Clash/Providers/ChinaDomain.yaml"
+    path: ./ruleset/ChinaDomain.yaml
+    interval: 86400
+  ChinaIp:
+    type: http
+    behavior: classical
+    url: "https://cdn.jsdelivr.net/gh/ACL4SSR/ACL4SSR@master/Clash/Providers/ChinaIp.yaml"
+    path: ./ruleset/ChinaIp.yaml
+    interval: 86400
+  ChinaMedia:
+    type: http
+    behavior: classical
+    url: "https://cdn.jsdelivr.net/gh/ACL4SSR/ACL4SSR@master/Clash/Providers/ChinaMedia.yaml"
+    path: ./ruleset/ChinaMedia.yaml
+    interval: 86400
+  LocalAreaNetwork:
+    type: http
+    behavior: classical
+    url: "https://cdn.jsdelivr.net/gh/ACL4SSR/ACL4SSR@master/Clash/Providers/LocalAreaNetwork.yaml"
+    path: ./ruleset/LocalAreaNetwork.yaml
+    interval: 86400
+
+rules:
+  - RULE-SET,BanAD,REJECT
+  - RULE-SET,Apple,🚀 自建节点
+  - RULE-SET,ProxyGFWlist,🚀 自建节点
+  - RULE-SET,ProxyMedia,🚀 自建节点
+  - RULE-SET,ProxyLite,🚀 自建节点
+  - RULE-SET,ChinaDomain,DIRECT
+  - RULE-SET,ChinaIp,DIRECT
+  - RULE-SET,ChinaMedia,DIRECT
+  - RULE-SET,LocalAreaNetwork,DIRECT
+  - GEOIP,CN,DIRECT
+  - MATCH,🚀 自建节点
