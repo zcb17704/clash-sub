@@ -138,5 +138,6 @@ rules:
   - RULE-SET,ChinaIp,DIRECT
   - RULE-SET,ChinaMedia,DIRECT
   - RULE-SET,LocalAreaNetwork,DIRECT
+  - IP-CIDR,100.66.0.0/16,DIRECT #节点小宝异地组网
   - GEOIP,CN,DIRECT
   - MATCH,🚀 自建节点
