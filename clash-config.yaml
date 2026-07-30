@@ -1,4 +1,11 @@
 proxies:
+  - name: "──────── 移动/有IPv6 → 直连 ────────"
+    type: ss
+    server: 127.0.0.1
+    port: 1
+    cipher: aes-256-gcm
+    password: "disabled"
+
   - name: "自建-东京-v4"
     type: vless
     server: 45.192.249.244
@@ -14,38 +21,6 @@ proxies:
     reality-opts:
       public-key: PZbWzaFDKzEudGuUHNQskYsni1stsBOWMB1wQouJSVg
       short-id: "47a06576"
-
-  - name: "自建-东京-中转"
-    type: vless
-    server: 111.39.250.124
-    port: 46028
-    uuid: 130aa8e0-d9ee-4c1a-b590-1d538a9c29bf
-    network: tcp
-    tls: true
-    udp: true
-    flow: xtls-rprx-vision
-    client-fingerprint: chrome
-    servername: www.apple.com
-    skip-cert-verify: true
-    reality-opts:
-      public-key: PZbWzaFDKzEudGuUHNQskYsni1stsBOWMB1wQouJSVg
-      short-id: "47a06576"
-
-  - name: "自建-香港-中转"
-    type: vless
-    server: 111.39.250.124
-    port: 46029
-    uuid: 34309e50-6697-4836-8d0e-c17ee2f979c4
-    network: tcp
-    tls: true
-    udp: true
-    flow: xtls-rprx-vision
-    client-fingerprint: chrome
-    servername: www.apple.com
-    skip-cert-verify: true
-    reality-opts:
-      public-key: ZUpEUDxLNrNXWkiT20EFTz6cIc0RmjL-Olib-OennB0
-      short-id: "5eac8289"
 
   - name: "自建-香港-v4"
     type: vless
@@ -95,16 +70,94 @@ proxies:
       public-key: ZUpEUDxLNrNXWkiT20EFTz6cIc0RmjL-Olib-OennB0
       short-id: "5eac8289"
 
+  - name: "──────── 联通/电信/广电 → 中转 ────────"
+    type: ss
+    server: 127.0.0.1
+    port: 1
+    cipher: aes-256-gcm
+    password: "disabled"
+
+  - name: "自建-东京-中转"
+    type: vless
+    server: 111.39.250.124
+    port: 46028
+    uuid: 130aa8e0-d9ee-4c1a-b590-1d538a9c29bf
+    network: tcp
+    tls: true
+    udp: true
+    flow: xtls-rprx-vision
+    client-fingerprint: chrome
+    servername: www.apple.com
+    skip-cert-verify: true
+    reality-opts:
+      public-key: PZbWzaFDKzEudGuUHNQskYsni1stsBOWMB1wQouJSVg
+      short-id: "47a06576"
+
+  - name: "自建-香港-中转"
+    type: vless
+    server: 111.39.250.124
+    port: 46029
+    uuid: 34309e50-6697-4836-8d0e-c17ee2f979c4
+    network: tcp
+    tls: true
+    udp: true
+    flow: xtls-rprx-vision
+    client-fingerprint: chrome
+    servername: www.apple.com
+    skip-cert-verify: true
+    reality-opts:
+      public-key: ZUpEUDxLNrNXWkiT20EFTz6cIc0RmjL-Olib-OennB0
+      short-id: "5eac8289"
+
+  - name: "──────── 机场备用 ────────"
+    type: ss
+    server: 127.0.0.1
+    port: 1
+    cipher: aes-256-gcm
+    password: "disabled"
+
+  - name: "🇯🇵 [直连][旗舰]日本1"
+    type: vless
+    server: jp1-vip2.suntree.club
+    port: 443
+    uuid: 63a92837-1ca6-465a-83b5-6bde2faff0b0
+    network: tcp
+    udp: true
+    tls: true
+    flow: xtls-rprx-vision
+    client-fingerprint: chrome
+    servername: www.microsoft.com
+    reality-opts:
+      public-key: BA8mvRN9GwK0UyNqEbpmhpslATWzSn9N0Ady9rHXuGQ
+      short-id: "34d571c93fb25e4b"
+
+  - name: "🇭🇰 [直连][旗舰]香港1"
+    type: vless
+    server: hk1-vip2.suntree.club
+    port: 443
+    uuid: 63a92837-1ca6-465a-83b5-6bde2faff0b0
+    network: tcp
+    udp: true
+    tls: true
+    flow: xtls-rprx-vision
+    client-fingerprint: chrome
+    servername: www.microsoft.com
+    reality-opts:
+      public-key: BA8mvRN9GwK0UyNqEbpmhpslATWzSn9N0Ady9rHXuGQ
+      short-id: "34d571c93fb25e4b"
+
 proxy-groups:
   - name: "🚀 自建节点"
     type: select
     proxies:
-      - "自建-东京-中转"
-      - "自建-香港-中转"
       - "自建-东京-v4"
       - "自建-香港-v4"
       - "自建-东京-v6"
       - "自建-香港-v6"
+      - "自建-东京-中转"
+      - "自建-香港-中转"
+      - "🇯🇵 [直连][旗舰]日本1"
+      - "🇭🇰 [直连][旗舰]香港1"
 
 rule-providers:
   BanAD:
