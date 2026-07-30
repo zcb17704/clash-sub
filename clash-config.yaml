@@ -15,6 +15,38 @@ proxies:
       public-key: PZbWzaFDKzEudGuUHNQskYsni1stsBOWMB1wQouJSVg
       short-id: "47a06576"
 
+  - name: "自建-东京-中转"
+    type: vless
+    server: 111.39.250.124
+    port: 46028
+    uuid: 130aa8e0-d9ee-4c1a-b590-1d538a9c29bf
+    network: tcp
+    tls: true
+    udp: true
+    flow: xtls-rprx-vision
+    client-fingerprint: chrome
+    servername: www.apple.com
+    skip-cert-verify: true
+    reality-opts:
+      public-key: PZbWzaFDKzEudGuUHNQskYsni1stsBOWMB1wQouJSVg
+      short-id: "47a06576"
+
+  - name: "自建-香港-中转"
+    type: vless
+    server: 111.39.250.124
+    port: 46029
+    uuid: 34309e50-6697-4836-8d0e-c17ee2f979c4
+    network: tcp
+    tls: true
+    udp: true
+    flow: xtls-rprx-vision
+    client-fingerprint: chrome
+    servername: www.apple.com
+    skip-cert-verify: true
+    reality-opts:
+      public-key: ZUpEUDxLNrNXWkiT20EFTz6cIc0RmjL-Olib-OennB0
+      short-id: "5eac8289"
+
   - name: "自建-香港-v4"
     type: vless
     server: 151.242.125.100
@@ -69,6 +101,8 @@ proxy-groups:
     proxies:
       - "自建-东京-中转"
       - "自建-香港-中转"
+      - "自建-东京-v4"
+      - "自建-香港-v4"
       - "自建-东京-v6"
       - "自建-香港-v6"
 
